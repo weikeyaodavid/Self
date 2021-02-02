@@ -4,6 +4,21 @@ import java.util.*;
 
 public class task1_29 {
 
+    //1
+    public int[] twoSum(int[] nums, int target) {
+        if (nums.length <= 1 || nums == null) return null;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(nums[0], 0);
+        for (int i = 1; i < nums.length; i++) {
+            if (map.containsKey((target - nums[i]))) {
+                return new int[]{map.get((target - nums[i])), i};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        return null;
+    }
+
     //15
     public static List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
@@ -37,6 +52,6 @@ public class task1_29 {
     //        }
 
     public static void main(String[] args) {
-        System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}).toString());
+        System.out.println(threeSum(new int[]{1,0,-1,0,-2,2}).toString());
     }
 }

@@ -42,39 +42,7 @@ public class task1_28 {
         return false;
     }
 
-    //1
-    public int[] twoSum(int[] nums, int target) {
-        if (nums.length <= 1 || nums == null) return null;
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(nums[0], 0);
-        for (int i = 1; i < nums.length; i++) {
-            if (map.containsKey((target - nums[i]))) {
-                return new int[]{map.get((target - nums[i])), i};
-            } else {
-                map.put(nums[i], i);
-            }
-        }
-        return null;
-    }
-
     public static void main(String[] args) {
 
     }
 }
-
-//    Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
-//
-//        Notice that the solution set must not contain duplicate triplets.
-
-//
-//        Input: nums = [-1,0,1,2,-1,-4]
-//        Output: [[-1,-1,2],[-1,0,1]]
-//
-//        Input: nums = []
-//        Output: []
-//
-//        Input: nums = [0]
-//        Output: []
-
-
-
