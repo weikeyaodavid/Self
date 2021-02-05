@@ -7,10 +7,10 @@ public class task2_04 {
         int first = 0;
         int end = nums.length - 1;
         int mid;
-        while(first < end){
+        while(first <= end){
             mid = (first + end) / 2;
             if(nums[mid] == target)return mid;
-            if(nums[mid] <= target){
+            if(nums[mid] < target){
                 first = mid + 1;
             }else {
                 end = mid - 1;
