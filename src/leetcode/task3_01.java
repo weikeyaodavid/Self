@@ -54,6 +54,8 @@ public class task3_01 {
         return digits;
     }
 
+    //数组初始化出来后都是0    new int[n]
+
     public static void main(String[] args) {
         merge(new int[][]{{1,3},{2,6},{8,10},{15,18}});
         System.out.println(Arrays.toString(plusOne(new int[]{9, 8, 9})));
