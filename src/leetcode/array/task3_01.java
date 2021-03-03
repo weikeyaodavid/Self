@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.array;
 
 import javax.jnlp.ClipboardService;
 import java.util.ArrayList;
