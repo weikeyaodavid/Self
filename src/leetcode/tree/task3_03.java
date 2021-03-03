@@ -79,7 +79,7 @@ public class task3_03 {
     }
 
 
-
+    
     public static void main(String[] args) {
         int[] arr = new int[]{6, 3, 8, 2, 5, 1, 7};
         Tree tree = new Tree();
