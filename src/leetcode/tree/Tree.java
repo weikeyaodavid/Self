@@ -37,57 +37,6 @@ public class Tree {
             }
         }
     }
-
-
-
-    //非递归遍历方法
-
-    public void preorder(TreeNode node){
-        TreeNode temp = node;
-        Stack<TreeNode> stack = new Stack<>();
-        while(temp != null || !stack.empty()){
-            while(temp != null){
-                System.out.println(temp.val);
-                stack.push(temp);
-                temp = temp.left;
-            }
-            temp = stack.pop().right;
-        }
-    }
-
-    public void inorder(TreeNode node){
-        TreeNode temp = node;
-        Stack<TreeNode> stack = new Stack<>();
-        while(temp != null || !stack.empty()){
-            while(temp != null){
-                stack.push(temp);
-                temp = temp.left;
-            }
-            temp = stack.pop();
-            System.out.println(temp.val);
-            temp = temp.right;
-        }
-    }
-
-    public void postorder(TreeNode node){
-        Stack<TreeNode> stack = new Stack<>();
-        Stack<Integer> res = new Stack<>();
-        if(root == null)return;
-        stack.push(root);
-        while(!stack.empty()){
-            TreeNode temp = stack.pop();
-            res.push(temp.val);
-            if(temp.left != null){
-                stack.push(temp.left);
-            }
-            if(temp.right != null){
-                stack.push(temp.right);
-            }
-        }
-        while(!res.empty()){
-            System.out.println(res.pop());
-        }
-    }
 }
 
 

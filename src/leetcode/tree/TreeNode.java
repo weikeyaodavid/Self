@@ -9,30 +9,6 @@ public class TreeNode {
         this.val = val;
     }
 
-    public void preorder(TreeNode node){
-        if(node != null){
-            System.out.println(node.val);
-            preorder(node.left);
-            preorder(node.right);
-        }
-    }
-
-    public void inorder(TreeNode node){
-        if(node != null){
-            inorder(node.left);
-            System.out.println(node.val);
-            inorder(node.right);
-        }
-    }
-
-    public void postorder(TreeNode node){
-        if(node != null){
-            postorder(node.left);
-            postorder(node.right);
-            System.out.println(node.val);
-        }
-    }
-
     //得到当前树（普通树）最大深度  找到左右子树最大的层数
     public int getHeight(TreeNode node){
         if(node == null)return 0;
