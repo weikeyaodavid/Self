@@ -5,6 +5,9 @@ import java.util.Stack;
 public class Tree {
     TreeNode root;
 
+    //一般在生活中使用二叉搜索树（BST - Binary Search Tree）
+    //       左子树 < 根 < 右子树
+
     //二叉搜索树的插入方法
     public void insert(Tree tree, int val) {
         TreeNode node = new TreeNode(val);
@@ -24,21 +27,15 @@ public class Tree {
                 if (temp.left == null) {
                     temp.left = node;
                     return;
-                } else {
-                    temp = temp.left;
                 }
+                temp = temp.left;
             } else {
                 if (temp.right == null) {
                     temp.right = node;
                     return;
-                } else {
-                    temp = temp.right;
                 }
+                temp = temp.right;
             }
         }
     }
 }
-
-
-//一般在生活中使用二叉搜索树（BST - Binary Search Tree）
-//       左子树 < 根 < 右子树
