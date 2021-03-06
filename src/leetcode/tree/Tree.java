@@ -2,7 +2,6 @@ package leetcode.tree;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
-import java.util.Stack;
 
 public class Tree {
     TreeNode root;
@@ -17,7 +16,7 @@ public class Tree {
         node.right = null;
 
         //若为空树则直接变成根节点
-        if (tree.root == null){
+        if (tree.root == null) {
             tree.root = node;
             return;
         }
@@ -48,7 +47,7 @@ public class Tree {
 //    BFS用来解决层序遍历和最短路径问题
 
     //DFS遍历使用递归
-    public void dfs(TreeNode root){
+    public void dfs(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -57,7 +56,7 @@ public class Tree {
     }
 
     //BFS遍历使用队列
-    public void bfs(TreeNode root){
+    public void bfs(TreeNode root) {
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
         while (!queue.isEmpty()) {

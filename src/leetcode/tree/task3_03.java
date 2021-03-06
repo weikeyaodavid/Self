@@ -4,8 +4,8 @@ import java.util.Stack;
 
 public class task3_03 {
 
-    public void preorder(TreeNode node){
-        if(node != null){
+    public void preorder(TreeNode node) {
+        if (node != null) {
             System.out.println(node.val);
             preorder(node.left);
             preorder(node.right);
@@ -13,16 +13,16 @@ public class task3_03 {
     }
 
     //所有二叉搜索树的中序遍历都是从小到大排列
-    public void inorder(TreeNode node){
-        if(node != null){
+    public void inorder(TreeNode node) {
+        if (node != null) {
             inorder(node.left);
             System.out.println(node.val);
             inorder(node.right);
         }
     }
 
-    public void postorder(TreeNode node){
-        if(node != null){
+    public void postorder(TreeNode node) {
+        if (node != null) {
             postorder(node.left);
             postorder(node.right);
             System.out.println(node.val);
@@ -30,11 +30,11 @@ public class task3_03 {
     }
 
     //非递归遍历方法
-    public void preorder2(TreeNode node){
+    public void preorder2(TreeNode node) {
         TreeNode temp = node;
         Stack<TreeNode> stack = new Stack<>();
-        while(temp != null || !stack.empty()){
-            while(temp != null){
+        while (temp != null || !stack.empty()) {
+            while (temp != null) {
                 System.out.println(temp.val);
                 stack.push(temp);
                 temp = temp.left;
@@ -44,11 +44,11 @@ public class task3_03 {
     }
 
     //所有二叉搜索树的中序遍历都是从小到大排列
-    public void inorder2(TreeNode node){
+    public void inorder2(TreeNode node) {
         TreeNode temp = node;
         Stack<TreeNode> stack = new Stack<>();
-        while(temp != null || !stack.empty()){
-            while(temp != null){
+        while (temp != null || !stack.empty()) {
+            while (temp != null) {
                 stack.push(temp);
                 temp = temp.left;
             }
@@ -58,26 +58,25 @@ public class task3_03 {
         }
     }
 
-    public void postorder2(TreeNode node){
+    public void postorder2(TreeNode node) {
         Stack<TreeNode> stack = new Stack<>();
         Stack<Integer> res = new Stack<>();
-        if(node == null)return;
+        if (node == null) return;
         stack.push(node);
-        while(!stack.empty()){
+        while (!stack.empty()) {
             TreeNode temp = stack.pop();
             res.push(temp.val);
-            if(temp.left != null){
+            if (temp.left != null) {
                 stack.push(temp.left);
             }
-            if(temp.right != null){
+            if (temp.right != null) {
                 stack.push(temp.right);
             }
         }
-        while(!res.empty()){
+        while (!res.empty()) {
             System.out.println(res.pop());
         }
     }
-
 
 
     public static void main(String[] args) {
