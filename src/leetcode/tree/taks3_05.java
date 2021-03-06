@@ -164,10 +164,11 @@ public class taks3_05 {
         }
         return true;
     }
-
     //递归法转迭代法就是需要用队列queue
+    //Queue 的实现中 ArrayDeque不接收null值
+    //所以使用LinkedList来实现   offer  poll
 
-
+    
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
