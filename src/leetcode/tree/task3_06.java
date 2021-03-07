@@ -63,39 +63,6 @@ public class task3_06 {
         helper(node.right, targetSum - node.val, temp, res);
     }
 
-    //BFS
-    public List<List<Integer>> pathSum2(TreeNode root, int targetSum) {
-        List<List<Integer>> res = new ArrayList<>();
-        List<Integer> sub = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
-        Queue<Integer> val = new LinkedList<>();
-
-        TreeNode temp = root;
-        queue.add(temp);
-        val.add(targetSum);
-        while(!queue.isEmpty()){
-            int n = queue.size();
-            for(int a = 0; a < n; a++) {
-                temp = queue.poll();
-                sub.add(temp.val);
-                if (temp.left == null && temp.right == null && temp.val == val.poll()) {
-                    res.add(sub);
-                    continue;
-                }
-                if (temp.left != null) {
-                    queue.add(temp.left);
-                    val.add(targetSum - temp.val);
-                }
-                if (temp.right != null) {
-                    queue.add(temp.right);
-                    val.add(targetSum - temp.val);
-                }
-                sub.remove(sub.size() - 1);
-            }
-        }
-        return res;
-    }
-
     public static void main(String[] args) {
 
     }
