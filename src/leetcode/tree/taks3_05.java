@@ -98,6 +98,7 @@ public class taks3_05 {
         return max + 1;
     }
 
+
     //111    BFS
     public int minDepth(TreeNode root) {
         Queue<TreeNode> queue = new ArrayDeque<>();
@@ -121,7 +122,6 @@ public class taks3_05 {
         }
         return level;
     }
-
     //DFS
     public int minDepth2(TreeNode root) {
         if (root == null) return 0;
@@ -142,13 +142,11 @@ public class taks3_05 {
     public static boolean isSymmetric(TreeNode root) {
         return check(root, root);
     }
-
     public static boolean check(TreeNode left, TreeNode right) {
         if (left == null && right == null) return true;
         if (left == null || right == null) return false;
         return left.val == right.val && check(left.left, right.right) && check(left.right, right.left);
     }
-
     //迭代
     public static boolean isSymmetric2(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
@@ -170,6 +168,7 @@ public class taks3_05 {
     //递归法转迭代法就是需要用队列queue
     //Queue 的实现中 ArrayDeque不接收null值
     //所以使用LinkedList来实现   offer  poll
+
 
 
     public static void main(String[] args) {

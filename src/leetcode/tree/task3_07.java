@@ -5,10 +5,9 @@ import java.util.HashMap;
 
 public class task3_07 {
 
+    //106 后序遍历的末尾值为根节点 中序遍历的根节点左边为左子树，右边为右子树
     HashMap<Integer, Integer> memory = new HashMap<>();
     int[] post;
-
-    //106 后序遍历的末尾值为根节点 中序遍历的根节点左边为左子树，右边为右子树
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         //此操作是为了在另一个方法中可用数组，不需要将数组传进去
         post = postorder;
@@ -16,7 +15,6 @@ public class task3_07 {
         TreeNode root = buildTree(0, inorder.length - 1, 0, postorder.length - 1);
         return root;
     }
-
     private TreeNode buildTree(int is, int ie, int ps, int pe) {
         if (is > ie || ps > pe) return null;
         int root = post[pe];
@@ -28,18 +26,15 @@ public class task3_07 {
     }
 
 
-
+    //105  与106类似 先序遍历根节点在第一个
     HashMap<Integer, Integer> memo = new HashMap<>();
     int[] pre;
-
-    //105  与106类似 先序遍历根节点在第一个
     public TreeNode buildTree2(int[] preorder, int[] inorder) {
         pre = preorder;
         for (int i = 0; i < inorder.length; i++) memo.put(inorder[i], i);
         TreeNode node = buildTree2(0, preorder.length - 1, 0, inorder.length - 1);
         return node;
     }
-
     public TreeNode buildTree2(int pl, int pr, int il, int ir) {
         if(pl > pr || il > ir)return null;
         int rootVal = pre[pl];

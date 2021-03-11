@@ -14,7 +14,6 @@ public class task3_06 {
         if (targetSum - root.val == 0 && root.left == null && root.right == null) return true;
         return hasPathSum(root.right, targetSum - root.val) || hasPathSum(root.left, root.val);
     }
-
     //BFS
     public boolean hasPathSum2(TreeNode root, int targetSum) {
         Queue<TreeNode> queue = new LinkedList<>();
@@ -39,6 +38,7 @@ public class task3_06 {
         return false;
     }
 
+
     //113 DFS
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<List<Integer>> res = new ArrayList<>();
@@ -46,7 +46,6 @@ public class task3_06 {
         helper(root, targetSum, sub, res);
         return res;
     }
-
     public void helper(TreeNode node, int targetSum, List<Integer> sub, List<List<Integer>> res) {
         if (node == null) return;
         if (node.left == null && node.right == null && node.val == targetSum) {
@@ -63,7 +62,4 @@ public class task3_06 {
         helper(node.right, targetSum - node.val, temp, res);
     }
 
-    public static void main(String[] args) {
-
-    }
 }
