@@ -8,6 +8,12 @@ public class task3_16 {
 
     static List<List<Integer>> res = new ArrayList<>();
     static List<Integer> path = new ArrayList<>();
+
+    //回溯法就相当于是暴力搜索 + 剪枝操作
+    //暴力搜索采用 DFS 的方式
+    //剪枝在 for 循环中裁去
+
+
     //77    回溯算法都能转化为树形结构
     public List<List<Integer>> combine(int n, int k) {
         dfs(1, n, k);
@@ -24,6 +30,7 @@ public class task3_16 {
             path.remove(path.size() - 1);
         }
     }
+
 
     //39
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
@@ -47,8 +54,4 @@ public class task3_16 {
         }
     }
 
-
-    public static void main(String[] args) {
-        combinationSum(new int[]{2, 3, 6, 7}, 7);
-    }
 }
