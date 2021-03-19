@@ -41,7 +41,7 @@ public class task3_17 {
 
 
     //17 Letter Combinations of a Phone Number
-    //用StringBuffer去处理字符串
+    //用StringBuffer去处理字符串      append / deleteCharAt
     List<String> ans = new ArrayList<>();
     public List<String> letterCombinations(String digits) {
         if(digits == "")return new ArrayList<>();
