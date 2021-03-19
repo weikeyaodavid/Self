@@ -84,15 +84,24 @@ public class task3_18 {
 
 
     //78. Subsets
+    //注意重点   放入 a 是全排列   放入 a + 1 是子集
     public List<List<Integer>> subsets(int[] nums) {
-        backtrack(0, nums);
+        for(int i = 0; i <= nums.length; i++){
+            backtrack(i, nums, 0);
+        }
         return res;
     }
-
-    private void backtrack(int i, int[] nums) {
-        res.add(new ArrayList<>());
-
-
+    private void backtrack(int i, int[] nums, int startIndex) {
+        if(path.size() == i){
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        for(int a = startIndex; a <= nums.length; a++){
+            path.add(nums[a]);
+            //此处是重点，放入 a + 1
+            backtrack(i, nums, a + 1);
+            path.remove(path.size() - 1);
+        }
     }
 }
 
