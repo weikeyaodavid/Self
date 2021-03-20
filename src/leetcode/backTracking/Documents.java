@@ -8,7 +8,19 @@ public class Documents {
 //            3. 二维数组下的DFS搜索（八皇后、黄金矿工、数独）
 //            4. 切割，子集，棋盘
 
-    //组合 39 40   全排列 46 47   子集 78 90
+
+
+    //回溯全排列还是不包含相同排列
+    //全排列
+    // for(int i = 0; i < nums.length; i++){
+    //
+    //不包含相同排列
+    // for(int i = startIndex; i < nums.length; i++){
+
+
+    //经典回溯去重方法
+    //在一个数组中包含相同元素的去重复组合方法
+    // if(used[i] == 1 || (i > 0 && nums[i] == nums[i - 1] && used[i - 1] == 0))continue;
 
 
 
