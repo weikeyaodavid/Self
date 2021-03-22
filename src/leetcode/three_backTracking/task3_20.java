@@ -33,32 +33,28 @@ public class task3_20 {
 
 
     //93. Restore IP Addresses
-    static List<String> ans = new ArrayList<>();
-    static StringBuffer sub = new StringBuffer();
-    public static List<String> restoreIpAddresses(String s) {
-        DFS(s, 0, 0, 0);
+    List<String> ans = new ArrayList<>();
+    StringBuffer sub = new StringBuffer();
+    public List<String> restoreIpAddresses(String s) {
+        DFS(s, 0, 0);
         return ans;
     }
-    private static void DFS(String s, int startIndex, int index, int num){
+    private void DFS(String s, int startIndex, int index){
         if(startIndex == 4 && index == s.length()){
-            sub.deleteCharAt(sub.length() - 1);
-            ans.add(sub.toString());
+            ans.add(sub.substring(0, sub.length() - 1));
             return;
         }
-        if(index == s.length())return;
-        if(Integer.parseInt(s.substring(index, index + 1 + num)) > 255)return;
-        for(int i = index; i < s.length() && num < 3; i++){
+        if(startIndex == 4 && index < s.length()){
+            return;
+        }
+        for(int i = index; i < s.length() && i - index < 3; i++){
+            if((i - index) > 0 && s.charAt(index) == '0')return;
+            if((s.length() - i) > (4 - startIndex) * 3)return;
+            if(Integer.parseInt(s.substring(index, i + 1)) > 255)return;
             sub.append(s, index, i + 1);
             sub.append(".");
-            DFS(s, startIndex + 1, index, num + 1);
-            sub.delete(index, i + 2);
+            DFS(s, startIndex + 1, i + 1);
+            sub.delete(sub.length() - i + index - 2, sub.length());
         }
     }
-
-    public static void main(String[] args) {
-        restoreIpAddresses("25525511135");
-    }
 }
-//        s = "25525511135"
-//        Output: ["255.255.11.135","255.255.111.35"]
-//        0 - 255
