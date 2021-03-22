@@ -39,7 +39,15 @@ public class task3_20 {
         return ans;
     }
     private void DFS(String s, StringBuffer sb, int startIndex){
-        
+        if(startIndex == s.length()){
+            ans.add(sb.toString());
+            return;
+        }
+        if(Integer.parseInt(sb.toString()) > 255)return;
+
     }
 
 }
+//        s = "25525511135"
+//        Output: ["255.255.11.135","255.255.111.35"]
+//        0 - 255
