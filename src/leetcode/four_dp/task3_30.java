@@ -64,20 +64,20 @@ public class task3_30 {
     // 这一类问题，问方案数，但不问具体方案的，可以考虑使用「动态规划」完成；
     //「动态规划」处理字符串问题的思想是：从一个空串开始，一点一点得到更大规模的问题的解。
     public int numDecodings(String s) {
-        if(s.equals("0") || s.charAt(0)=='0')return 0;
+        if (s.equals("0") || s.charAt(0) == '0') return 0;
         int[] dp = new int[s.length()];
         dp[0] = 1;
         for (int i = 1; i < s.length(); i++) {
             if (s.charAt(i) == '0') {
                 if (s.charAt(i - 1) == '1' || s.charAt(i - 1) == '2') {
-                    if(i > 1)dp[i] = dp[i - 2];
+                    if (i > 1) dp[i] = dp[i - 2];
                     else dp[i] = dp[i - 1];
                 } else {
                     return 0;
                 }
             } else {
                 if (s.charAt(i - 1) == '1' || (s.charAt(i - 1) == '2' && Integer.parseInt(String.valueOf(s.charAt(i))) <= 6)) {
-                    if(i > 1)dp[i] = dp[i - 1] + dp[i - 2];
+                    if (i > 1) dp[i] = dp[i - 1] + dp[i - 2];
                     else dp[i] = dp[i - 1] + 1;
                 } else {
                     dp[i] = dp[i - 1];
@@ -88,34 +88,34 @@ public class task3_30 {
     }
 
 
-
     public int minCut(String s) {
-                int len = s.length();
-                if (len < 2) {
-                    return 0;
-                }
-                int[] dp = new int[s.length()];
-                Arrays.fill(dp, s.length());
-                dp[0] = 0;
-                for(int i = 1; i < s.length(); i++){
-                    if(checkPalindrome(s, 0, i)){
-                        dp[i] = 0;
-                        continue;
-                    }
-                    for(int j = 0; j < i; j++){
-                        if(checkPalindrome(s, j + 1, i))
-                            dp[i] = Math.min(dp[i], dp[j] + 1);
-                    }
-                }
-                return dp[dp.length - 1];
+        int len = s.length();
+        if (len < 2) {
+            return 0;
+        }
+        int[] dp = new int[s.length()];
+        Arrays.fill(dp, s.length());
+        dp[0] = 0;
+        for (int i = 1; i < s.length(); i++) {
+            if (checkPalindrome(s, 0, i)) {
+                dp[i] = 0;
+                continue;
             }
-            private boolean checkPalindrome(String s, int left, int right) {
-                while (left < right) {
-                    if (s.charAt(left) != s.charAt(right)) {
-                        return false;
-                    }
-                    left++;
-                    right--;
+            for (int j = 0; j < i; j++) {
+                if (checkPalindrome(s, j + 1, i))
+                    dp[i] = Math.min(dp[i], dp[j] + 1);
+            }
+        }
+        return dp[dp.length - 1];
+    }
+
+    private boolean checkPalindrome(String s, int left, int right) {
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
         }
         return true;
     }
