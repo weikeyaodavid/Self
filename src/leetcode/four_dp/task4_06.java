@@ -61,11 +61,8 @@ public class task4_06 {
     }
 
 
+    //5. Longest Palindromic Substring
+    public String longestPalindrome(String s) {
 
-
-    //72. Edit Distance
-    public int minDistance(String word1, String word2) {
-
-        
     }
 }
