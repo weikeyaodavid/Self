@@ -60,9 +60,4 @@ public class task4_06 {
         return dp[s1.length()][s2.length()];
     }
 
-
-    //5. Longest Palindromic Substring
-    public String longestPalindrome(String s) {
-
-    }
 }
