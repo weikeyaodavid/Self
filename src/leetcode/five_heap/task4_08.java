@@ -1,6 +1,7 @@
 package leetcode.five_heap;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
@@ -42,5 +43,34 @@ public class task4_08 {
             }
         }
         return maxHeat.peek();
+    }
+
+
+    //347. Top K Frequent Elements
+    //改造堆的构造器
+    //PriorityQueue<Integer> minHeat = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
+    public int[] topKFrequent(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < nums.length; i++){
+            if(!map.containsKey(nums[i])){
+                map.put(nums[i], 1);
+            }else {
+                map.put(nums[i], map.get(nums[i]) + 1);
+            }
+        }
+        PriorityQueue<Integer> minHeat = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
+        for (Integer key : map.keySet()) {
+            if (minHeat.size() < k) {
+                minHeat.add(key);
+            } else if (map.get(key) > map.get(minHeat.peek())) {
+                minHeat.remove();
+                minHeat.add(key);
+            }
+        }
+        int[] res = new int[k];
+        for(int i = 0; i < k; i++){
+            res[i] = minHeat.poll();
+        }
+        return res;
     }
 }
