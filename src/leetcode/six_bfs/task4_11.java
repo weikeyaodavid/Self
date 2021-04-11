@@ -104,20 +104,4 @@ public class task4_11 {
         }
         return (res1 + res2) <= k;
     }
-
-
-
-    //279. Perfect Squares
-    public int numSquares(int n) {
-        int a = (int) Math.sqrt(n);
-        int temp = n;
-        int res = 0;
-        for(int i = (int) Math.sqrt(n); i > 0; i--){
-            for(int j = i; j > 0; j--){
-                if(temp == 0)break;
-                temp = temp - j * j;
-                res++;
-            }
-        }
-    }
 }
