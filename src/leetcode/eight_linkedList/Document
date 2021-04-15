@@ -1,0 +1,27 @@
+
+
+    链表
+
+    分为单链表和双链表
+
+    public class SinglyListNode {
+        int val;
+        SinglyListNode next;
+        SinglyListNode(int x) { val = x; }
+    }
+
+    链表优势  插入删除快  O(1)
+    数组优势  查询快
+
+    常使用解决策略：双指针，快慢指针
+
+
+
+
+
+
+
+
+
+
+
