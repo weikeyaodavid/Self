@@ -21,39 +21,20 @@ public class task4_16 {
 
     //92. Reverse Linked List II
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode dummyNode = new ListNode();
+        ListNode dummyNode = new ListNode(-1);
         dummyNode.next = head;
         ListNode pre = dummyNode;
-        ListNode last = null;
-        ListNode waitOne = null;
-        ListNode waitTwo = null;
-        ListNode temp = dummyNode;
-        ListNode cur = head;
-        for(int i = 1; i < right; i++){
-            cur = cur.next;
-            if(i < left) pre = pre.next;
-            if(i == left){
-                pre.next = null;
-                waitOne = pre;
-            }
+        for(int i = 0; i < left - 1; i++){
+            pre = pre.next;
         }
-        waitTwo = cur.next;
-        cur.next = null;
-        ListNode ss = reverse(pre);
-        last = temp;
-        waitOne.next = pre;
-        ss.next = waitTwo;
-        return head;
-    }
-    public ListNode reverse(ListNode rev){
-        ListNode pre = rev;
-        ListNode cur = rev.next;
-        while(cur != null){
-            ListNode temp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = temp;
+        ListNode cur = pre.next;
+        ListNode tail = cur.next;
+        for(int i = 0; i < right- left; i++){
+            cur.next = tail.next;
+            tail.next = pre.next;
+            pre.next = tail;
+            tail = cur.next;
         }
-        return rev;
+        return dummyNode.next;
     }
 }
