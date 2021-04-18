@@ -160,4 +160,40 @@ public class task4_18 {
         p1.next = null;
         return small.next;
     }
+
+
+
+    //143. Reorder List
+    public void reorderList(ListNode head) {
+        ListNode fast = head.next;
+        ListNode slow = head;
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        ListNode next = slow.next;
+        slow.next = null;
+        ListNode rev = reverse(next);
+        ListNode first = head;
+        while(first != null && rev != null){
+            ListNode temp = first.next;
+            ListNode temp2 = rev.next;
+            first.next = rev;
+            rev.next = temp;
+            first = temp;
+            rev = temp2;
+        }
+        if(rev != null)first = rev;
+    }
+    public ListNode reverse(ListNode head){
+        ListNode cur = head;
+        ListNode pre = null;
+        while(cur != null){
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+    }
 }
