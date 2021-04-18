@@ -183,7 +183,6 @@ public class task4_18 {
             first = temp;
             rev = temp2;
         }
-        if(rev != null)first = rev;
     }
     public ListNode reverse(ListNode head){
         ListNode cur = head;
