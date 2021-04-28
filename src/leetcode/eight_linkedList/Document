@@ -27,13 +27,19 @@
     这种情况slow指针会指向中点偏左   并归时用slow.next
     ListNode slow = head;
     ListNode fast = head.next;
-    while(fast!=null && fast.next!=null)
+    while(fast != null && fast.next != null)
 
-    若这样slow指针会指向中点偏又   并归时需要用一个pre指向slow之前的位置
+    若这样slow指针会指向中点偏右    并归时需要用一个pre指向slow之前的位置
     ListNode slow = head;
     ListNode fast = head.next;
-    while(fast!=null && fast.next!=null)
+    while(fast != null && fast.next != null)
 
-
-
-
+    141
+    142
+    160
+    19
+    206
+    92
+    203
+    234
+    328
