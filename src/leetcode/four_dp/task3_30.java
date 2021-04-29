@@ -88,6 +88,7 @@ public class task3_30 {
     }
 
 
+    //132. Palindrome Partitioning II
     public int minCut(String s) {
         int len = s.length();
         if (len < 2) {
