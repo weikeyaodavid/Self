@@ -1,6 +1,7 @@
 package leetcode.two_tree;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Tree {
@@ -57,7 +58,7 @@ public class Tree {
 
     //BFS遍历使用队列
     public void bfs(TreeNode root) {
-        Queue<TreeNode> queue = new ArrayDeque<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
