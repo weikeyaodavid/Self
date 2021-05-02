@@ -56,32 +56,30 @@ public class task5_02 {
 
 
     //305. Number of Islands II
-    //有问题，自己重做
+    //有问题，超时，自己重做
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         List<Integer> res = new ArrayList<>();
         Map<Integer, List<Integer>> map = new HashMap<>();
-        List<Integer> uniqe = new ArrayList<>();
-        map.put(positions.length, new ArrayList<>());
+        List<Integer> unique = new ArrayList<>();
         DFU2 dfu = new DFU2(positions.length);
         for(int i = 0; i < positions.length; i++){
-            if(uniqe.contains(positions[i][0] * 10 + positions[i][1])){
+            if(unique.contains(positions[i][0] * n + positions[i][1])){
                 res.add(res.get(res.size() - 1));
                 continue;
             }
             for(int k : map.keySet()){
-                if(map.get(k).contains(positions[i][0] * 10 + positions[i][1])){
+                if(map.get(k).contains(positions[i][0] * n + positions[i][1])){
                     dfu.union(k,i);
                 }
             }
-
             ArrayList<Integer> subRes = new ArrayList<>();
-            if(positions[i][0] - 1 >= 0)subRes.add((positions[i][0] - 1) * 10 + positions[i][1]);
-            if(positions[i][0] + 1 < m)subRes.add((positions[i][0] + 1) * 10 + positions[i][1]);
-            if(positions[i][1] - 1 >= 0)subRes.add((positions[i][0]) * 10 + positions[i][1] - 1);
-            if(positions[i][1] + 1 < n)subRes.add((positions[i][0]) * 10 + positions[i][1] + 1);
+            if(positions[i][0] - 1 >= 0)subRes.add((positions[i][0] - 1) * n + positions[i][1]);
+            if(positions[i][0] + 1 < m)subRes.add((positions[i][0] + 1) * n + positions[i][1]);
+            if(positions[i][1] - 1 >= 0)subRes.add((positions[i][0]) * n + positions[i][1] - 1);
+            if(positions[i][1] + 1 < n)subRes.add((positions[i][0]) * n + positions[i][1] + 1);
             map.put(i, subRes);
-            uniqe.add(positions[i][0] * 10 + positions[i][1]);
-            res.add(dfu.getSize() - (positions.length - (i + 1)) - (i + 1 - uniqe.size()));
+            unique.add(positions[i][0] * n + positions[i][1]);
+            res.add(dfu.getSize() - (positions.length - (i + 1)) - (i + 1 - unique.size()));
         }
         return res;
     }
@@ -109,12 +107,14 @@ class DFU {
 }
 class DFU2 {
     int[] parent;
-
+    int[] rank;
     public DFU2(int n){
         parent = new int[n];
+        rank = new int[n];
         for(int i = 0; i < n; i++){
             parent[i] = i;
         }
+        Arrays.fill(rank, 1);
     }
 
     public int find(int n){
@@ -123,7 +123,15 @@ class DFU2 {
     }
 
     public void union(int x, int y){
-        parent[find(x)] = find(y);
+        if(find(x) == find(y))return;
+        if(rank[x] > rank[y]){
+            parent[find(y)] = find(x);
+        } else if(rank[x] < rank[y]){
+            parent[find(x)] = find(y);
+        } else {
+            parent[find(y)] = find(x);
+            rank[x]++;
+        }
     }
 
     public int getSize(){
