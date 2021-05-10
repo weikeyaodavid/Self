@@ -1,4 +1,4 @@
-package leetcode.nine_slidingWindow;
+package leetcode.ten_slidingWindow;
 
 public class task5_05 {
 

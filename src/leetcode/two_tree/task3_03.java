@@ -1,6 +1,6 @@
 package leetcode.two_tree;
 
-import java.util.Stack;
+import java.util.*;
 
 public class task3_03 {
 
@@ -29,43 +29,52 @@ public class task3_03 {
         }
     }
 
-    //非递归遍历方法
-    public void preorder2(TreeNode node) {
-        TreeNode temp = node;
+    //114 前序遍历
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = root;
         while (temp != null || !stack.empty()) {
             while (temp != null) {
-                System.out.println(temp.val);
                 stack.push(temp);
+                res.add(temp.val);
                 temp = temp.left;
             }
             temp = stack.pop().right;
         }
+        return res;
     }
 
-    //所有二叉搜索树的中序遍历都是从小到大排列
-    public void inorder2(TreeNode node) {
-        TreeNode temp = node;
+
+    //94 中序遍历
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = root;
         while (temp != null || !stack.empty()) {
             while (temp != null) {
                 stack.push(temp);
                 temp = temp.left;
             }
             temp = stack.pop();
-            System.out.println(temp.val);
+            res.add(temp.val);
             temp = temp.right;
         }
+        return res;
     }
 
-    public void postorder2(TreeNode node) {
+
+    //145 后序遍历
+    public List<Integer> postorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
-        Stack<Integer> res = new Stack<>();
-        if (node == null) return;
-        stack.push(node);
+        Stack<Integer> preRes = new Stack<>();
+        List<Integer> res = new ArrayList<>();
+
+        if (root == null) return new ArrayList<>();
+        stack.push(root);
         while (!stack.empty()) {
             TreeNode temp = stack.pop();
-            res.push(temp.val);
+            preRes.push(temp.val);
             if (temp.left != null) {
                 stack.push(temp.left);
             }
@@ -73,21 +82,34 @@ public class task3_03 {
                 stack.push(temp.right);
             }
         }
-        while (!res.empty()) {
-            System.out.println(res.pop());
+        while (!preRes.empty()) {
+            res.add(preRes.pop());
         }
+        return res;
     }
 
 
-    public static void main(String[] args) {
-        int[] arr = new int[]{6, 3, 8, 2, 5, 1, 7};
-        Tree tree = new Tree();
-        tree.root = null;
-        for (int i = 0; i < 7; i++) {
-            tree.insert(tree, arr[i]);
+    //102 层序遍历
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        TreeNode temp = root;
+        queue.add(temp);
+        while (!queue.isEmpty()) {
+            int n = queue.size();
+            List<Integer> sub = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                temp = queue.poll();
+                sub.add(temp.val);
+                if (temp.left != null) {
+                    queue.add(temp.left);
+                }
+                if (temp.right != null) {
+                    queue.add(temp.right);
+                }
+            }
+            res.add(sub);
         }
-        //inorder(tree.root);        //1，2，3，5，6，7，8
-        System.out.println(tree.root.getHeight(tree.root));
-        System.out.println(tree.root.getMaxVal(tree.root));
+        return res;
     }
 }

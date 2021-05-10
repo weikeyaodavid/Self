@@ -39,6 +39,7 @@ public class task3_06 {
     }
 
 
+
     //113 DFS
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<List<Integer>> res = new ArrayList<>();
@@ -61,5 +62,4 @@ public class task3_06 {
         helper(node.left, targetSum - node.val, temp, res);
         helper(node.right, targetSum - node.val, temp, res);
     }
-
 }
