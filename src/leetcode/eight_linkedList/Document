@@ -31,7 +31,7 @@
 
     若这样slow指针会指向中点偏右    并归时需要用一个pre指向slow之前的位置
     ListNode slow = head;
-    ListNode fast = head.next;
+    ListNode fast = head;
     while(fast != null && fast.next != null)
 
     141
