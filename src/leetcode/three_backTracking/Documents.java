@@ -24,7 +24,7 @@ public class Documents {
 
 
 
-//    代码框架
+//    代码框架      根据情况决定是否使用used[i]
 //
 //    result = []
 //    def backtrack(路径, 选择列表):
