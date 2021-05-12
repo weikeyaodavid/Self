@@ -19,7 +19,6 @@ public class task5_11 {
         }
         return minHeap.peek();
     }
-
 }
 
 class LRUCacheBeta<K, V> {
