@@ -6,45 +6,24 @@ public class task3_03 {
 
     //88
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int a = 0;
-        int b = 0;
-        while(a < m && b <n ){
-            if(nums1[a] > nums2[b]){
-                int temp = nums1[a];
-                nums1[a] = nums2[b];
-                nums2[b] = temp;
-                if(temp == 0)b++;
-                a++;
-                Arrays.sort(nums2);
+        int one = m - 1;
+        int two = n - 1;
+        for(int i = nums1.length - 1; i >= 0 && two >= 0 && one >= 0; i--){
+            if(nums1[one] >= nums2[two]){
+                nums1[i] = nums1[one];
+                one--;
             }else{
-                a++;
+                nums1[i] = nums2[two];
+                two--;
             }
         }
-        while(b < n){
-                nums1[a] = nums2[b];
-                a++;
-                b++;
+        if(one < 0){
+            for(int i = 0; i <= two; i++){
+                nums1[i] = nums2[i];
+            }
         }
     }
 
-    //三指针，从后向前
-//    public void merge(int[] nums1, int m, int[] nums2, int n) {
-//        // 三指针 指针一p1、nums1有效元素尾部；指针二p2、nums2尾部；指针三p3、最终数组尾部
-//        // 1.当，p1>=0时，nums[p1],nums[p2]对比
-//        // 1.1 nums[p1]大，将nums[p1]放入p3位置。p1--,p3--
-//        // 1.2 nums[p2]大于等于nums[p1]，将nums[p2]放入p3位置。p2--,p3--
-//        // 2.当，p1<0时，将nums[p2]放入p3位置。p2--,p3--
-//        // 循环结束条件：p2<0
-//
-//        int p1=m-1,p2=n-1,p3=m+n-1;
-//        while(p2 >= 0){
-//            if(p1 >= 0 && nums1[p1] > nums2[p2]){
-//                nums1[p3--] = nums1[p1--];
-//            } else {
-//                nums1[p3--] = nums2[p2--];
-//            }
-//        }
-//    }
 
 
     //202

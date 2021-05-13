@@ -35,5 +35,4 @@ public class task5_05 {
         }
         return max;
     }
-
 }
