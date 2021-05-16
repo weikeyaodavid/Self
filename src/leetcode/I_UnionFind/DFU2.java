@@ -3,8 +3,10 @@ package leetcode.I_UnionFind;
 import java.util.Arrays;
 
 public class DFU2 {
+
     int[] parent;
     int[] rank;
+
     public DFU2(int n){
         parent = new int[n];
         rank = new int[n];
@@ -38,4 +40,5 @@ public class DFU2 {
         }
         return res;
     }
+
 }
