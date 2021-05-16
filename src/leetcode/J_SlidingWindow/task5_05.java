@@ -17,7 +17,7 @@ public class task5_05 {
         int min_len = Integer.MAX_VALUE;
         int counter = t.length();
         String res = "";
-        for (int end = 0; end < s.length(); end ++) {
+        for (int end = 0; end < s.length(); end++) {
             char c1 = s.charAt(end);
             if (lookup.get(c1) > 0) counter--;
             lookup.put(c1, lookup.get(c1) - 1);
