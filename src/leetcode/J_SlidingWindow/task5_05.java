@@ -7,7 +7,33 @@ public class task5_05 {
 
     //76. Minimum Window Substring
     public String minWindow(String s, String t) {
-        return null;
+        Map<Character, Integer> lookup = new HashMap<>();
+        for (char c : s.toCharArray()) lookup.put(c, 0);
+        for (char c : t.toCharArray()) {
+            if (lookup.containsKey(c)) lookup.put(c, lookup.get(c) + 1);
+            else return "";
+        }
+        int start = 0;
+        int min_len = Integer.MAX_VALUE;
+        int counter = t.length();
+        String res = "";
+        for (int end = 0; end < s.length(); end ++) {
+            char c1 = s.charAt(end);
+            if (lookup.get(c1) > 0) counter--;
+            lookup.put(c1, lookup.get(c1) - 1);
+            while (counter == 0) {
+                if (min_len > end - start) {
+                    min_len = end - start;
+                    res = s.substring(start, end);
+                }
+                char c2 = s.charAt(start);
+                //其他元素在 end 未走之前只可能 < 0, 只有指定元素才会 = 0
+                if (lookup.get(c2) == 0) counter++;
+                lookup.put(c2, lookup.get(c2) + 1);
+                start++;
+            }
+        }
+        return res;
     }
 
 
