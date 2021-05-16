@@ -6,34 +6,15 @@ public class task5_02 {
 
     //323. Number of Connected Components in an Undirected Graph
     public int countComponents(int n, int[][] edges) {
-        //初始化
-        int[] unionFind = new int[n];
-        int[] rank = new int[n];
-        for(int i = 0; i < n; i++){
-            unionFind[i] = i;
+        DFU dfu = new DFU(n);
+        for(int i = 0; i < edges.length; i++){
+            dfu.union(edges[i][0], edges[i][1]);
         }
-        Arrays.fill(rank, 1);
-
-        for (int[] edge : edges) {
-            int a = find(unionFind, edge[0]);
-            int b = find(unionFind, edge[1]);
-            if (a != b) {
-                if (rank[a] > rank[b]) {
-                    unionFind[b] = a;
-                } else if (rank[a] < rank[b]) {
-                    unionFind[a] = b;
-                } else {
-                    unionFind[b] = a;
-                    rank[a]++;
-                }
-                n--;
-            }
+        int res = 0;
+        for(int i = 0; i < dfu.parent.length; i++){
+            if(dfu.parent[i] == i)res++;
         }
-        return n;
-    }
-    private int find(int[] union, int value){
-        if(union[value] != value)union[value] = find(union, union[value]);
-        return union[value];
+        return res;
     }
 
 
