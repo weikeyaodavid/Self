@@ -1,7 +1,9 @@
 package leetcode.I_UnionFind;
 
 public class DFU {
+
     int[] parent;
+
     public DFU(int n){
         parent = new int[n];
         for(int i = 0; i < n; i++){
@@ -17,4 +19,5 @@ public class DFU {
     public void union(int x, int y){
         parent[find(x)] = find(y);
     }
+
 }
