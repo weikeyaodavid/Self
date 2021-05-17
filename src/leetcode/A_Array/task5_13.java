@@ -28,8 +28,8 @@ public class task5_13 {
     public void quickSort(int[] arr, int start, int end){
         if(start >= end)return;
         int middle = partition(arr, start, end);
-        partition(arr, start, middle - 1);
-        partition(arr, middle + 1, end);
+        quickSort(arr, start, middle - 1);
+        quickSort(arr, middle + 1, end);
     }
     public int partition(int[] arr, int start, int end) {
         int pivot = arr[start];
