@@ -11,12 +11,6 @@
     就是for循环 + queue存节点
 
 
-    拓扑排序
-    给出结点输出先后顺序的算法。拓扑排序不是给出大小关系的排序，而是给出先后顺序的一种算法。这些结点的输出顺序需要保证：
-    只能在有向无环图中使用，使用广度优先搜索解决
-    课程表
-    https://leetcode-cn.com/problems/course-schedule/solution/bao-mu-shi-ti-jie-shou-ba-shou-da-tong-tuo-bu-pai-/
-
 
 
 
