@@ -19,4 +19,22 @@ public class task5_24 {
         }
         return head;
     }
+
+
+
+    //82. Remove Duplicates from Sorted List II
+    public ListNode deleteDuplicates2(ListNode head) {
+        if(head==null||head.next==null) return head;
+        ListNode guard=new ListNode();
+        guard.next=head;
+        ListNode pre=guard;
+        ListNode cur=head;
+        while(cur!=null){
+            while(cur.next!=null && cur.next.val==cur.val) cur=cur.next;
+            if(pre.next==cur)  pre=pre.next;
+            else pre.next=cur.next;
+            cur=cur.next;
+        }
+        return guard.next;
+    }
 }
