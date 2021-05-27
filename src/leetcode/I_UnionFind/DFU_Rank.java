@@ -2,12 +2,12 @@ package leetcode.I_UnionFind;
 
 import java.util.Arrays;
 
-public class DFU2 {
+public class DFU_Rank {
 
     int[] parent;
     int[] rank;
 
-    public DFU2(int n){
+    public DFU_Rank(int n){
         parent = new int[n];
         rank = new int[n];
         for(int i = 0; i < n; i++){
@@ -32,13 +32,4 @@ public class DFU2 {
             rank[x]++;
         }
     }
-
-    public int getSize(){
-        int res = 0;
-        for(int i = 0; i < parent.length; i++){
-            if(parent[i] == i)res++;
-        }
-        return res;
-    }
-
 }

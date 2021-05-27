@@ -42,7 +42,7 @@ public class task5_02 {
         List<Integer> res = new ArrayList<>();
         Map<Integer, List<Integer>> map = new HashMap<>();
         List<Integer> unique = new ArrayList<>();
-        DFU2 dfu = new DFU2(positions.length);
+        DFU_Rank dfu = new DFU_Rank(positions.length);
         for(int i = 0; i < positions.length; i++){
             if(unique.contains(positions[i][0] * n + positions[i][1])){
                 res.add(res.get(res.size() - 1));
