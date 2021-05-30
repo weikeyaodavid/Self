@@ -1,6 +1,10 @@
 package leetcode.A_Array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class task5_24 {
+
     //165. Compare Version Numbers
     //split（"."） 方法需要转意符号，要不以为是正则表达式 split（"//."）
     public int compareVersion(String version1, String version2) {
@@ -23,5 +27,26 @@ public class task5_24 {
             }
         }
         return 0;
+    }
+
+
+
+    //763. Partition Labels
+    public List<Integer> partitionLabels(String s) {
+        List<Integer> res = new ArrayList<>();
+        int[] ref = new int[26];
+        for(int i = 0; i < s.length(); i++){
+            ref[s.charAt(i) - 'a'] = i;
+        }
+        int first = 0;
+        int last = 0;
+        for(int i = 0; i < s.length(); i++){
+            last = Math.max(ref[s.charAt(i) - 'a'], last);
+            if(last == i){
+                res.add(last - first + 1);
+                first = i + 1;
+            }
+        }
+        return res;
     }
 }
