@@ -60,7 +60,7 @@ public class task5_02 {
             if(positions[i][1] + 1 < n)subRes.add((positions[i][0]) * n + positions[i][1] + 1);
             map.put(i, subRes);
             unique.add(positions[i][0] * n + positions[i][1]);
-            res.add(dfu.getSize() - (positions.length - (i + 1)) - (i + 1 - unique.size()));
+            res.add(/* dfu.getSize() */ - (positions.length - (i + 1)) - (i + 1 - unique.size()));
         }
         return res;
     }
