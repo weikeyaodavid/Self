@@ -7,11 +7,12 @@ public class Trie {
         TrieNode[] children = new TrieNode[26];
     }
 
+    TrieNode root;
+
     public Trie() {
         root = new TrieNode();
     }
 
-    TrieNode root;
 
 
     //208. Implement Trie (Prefix Tree)
