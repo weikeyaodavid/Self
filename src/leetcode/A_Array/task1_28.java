@@ -22,24 +22,6 @@ public class task1_28 {
     Given the array nums after the rotation and an integer target, return true if target is in nums, or false if it is not in nums.
     You must decrease the overall operation steps as much as possible.
      */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static int[] removeDuplicates(int[] nums) {
         int slow = 0;
         for (int fast : nums) {
@@ -100,6 +82,5 @@ public class task1_28 {
     }
 
     public static void main(String[] args) {
-
     }
 }

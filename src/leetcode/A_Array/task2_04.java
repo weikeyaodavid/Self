@@ -3,6 +3,7 @@ package leetcode.A_Array;
 public class task2_04 {
 
     //35
+    // left 和 right 最后是反的
     public static int searchInsert(int[] nums, int target) {
         int first = 0;
         int end = nums.length - 1;

@@ -32,7 +32,7 @@ public class task5_24 {
 
 
     //763. Partition Labels
-    public List<Integer> partitionLabels(String s) {
+    public static List<Integer> partitionLabels(String s) {
         List<Integer> res = new ArrayList<>();
         int[] ref = new int[26];
         for(int i = 0; i < s.length(); i++){
@@ -48,5 +48,9 @@ public class task5_24 {
             }
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        partitionLabels("ababcbacadefegdehijhklij");
     }
 }

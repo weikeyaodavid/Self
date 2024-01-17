@@ -50,6 +50,25 @@ public class task2_03 {
     //交换 nums[l] 和 nums[k]；
     //最后翻转 nums[k+1:]。
 
+//    public void nextPermutation(int[] nums) {
+//        for(int i = nums.length - 1; i > 0; i--){
+//            if(nums[i] > nums[i-1]){
+//                Arrays.sort(nums, i, nums.length);
+//                for(int j = i; j < nums.length; j++){
+//                    if(nums[j] > nums[i - 1]){
+//                        int y = nums[i - 1];
+//                        nums[i - 1] = nums[j];
+//                        nums[j] = y;
+//                        Arrays.sort(nums, i, nums.length);
+//                        return;
+//                    }
+//                }
+//            }
+//            if(i == 1){
+//                Arrays.sort(nums);
+//            }
+//        }
+//    }
 
     //34
     public static int[] searchRange(int[] nums, int target) {
@@ -119,6 +138,42 @@ public class task2_03 {
 //          然后仔细考虑  nums[mid] = target 的情况
 //                  与   left = mid /  right = mid  是否 -1
 
+    //二分法 left <= right 一定要有等于
+//    public int[] searchRange2(int[] nums, int target) {
+//        int left = 0;
+//        int right = nums.length - 1;
+//        int first = -1;
+//        int last = -1;
+//        // 找第一个等于target的位置
+//        while (left <= right) {
+//            int middle = (left + right) / 2;
+//            if (nums[middle] == target) {
+//                first = middle;
+//                right = middle - 1; //重点
+//            } else if (nums[middle] > target) {
+//                right = middle - 1;
+//            } else {
+//                left = middle + 1;
+//            }
+//        }
+//
+//        // 最后一个等于target的位置
+//        left = 0;
+//        right = nums.length - 1;
+//        while (left <= right) {
+//            int middle = (left + right) / 2;
+//            if (nums[middle] == target) {
+//                last = middle;
+//                left = middle + 1; //重点
+//            } else if (nums[middle] > target) {
+//                right = middle - 1;
+//            } else {
+//                left = middle + 1;
+//            }
+//        }
+//
+//        return new int[]{first, last};
+//    }
     public static void main(String[] args) {
         searchRange(new int[]{1}, 1);
     }
