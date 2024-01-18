@@ -2,49 +2,7 @@ package leetcode.F_Dp;
 
 import java.util.Arrays;
 
-public class task3_29 {
-
-    //关键解法 不好想
-    //dp[i] = Math.max(dp[i - 1] + dp[i], dp[i]);
-    //53. Maximum Subarray
-    public int maxSubArray(int[] nums) {
-        int[] dp = new int[nums.length];
-        dp[0] = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
-        }
-        int max = dp[0];
-        for (int i = 1; i < dp.length; i++) {
-            max = Math.max(max, dp[i]);
-        }
-        return max;
-    }
-
-
-    //300. Longest Increasing Subsequence
-    //状态转移方程好难想
-    //dp[i] = Math.max(dp[i], dp[j] + 1);
-    //dp[i] 表示：以 nums[i] 结尾 的「上升子序列」的长度
-    //如果一个较大的数接在较小的数后面，就会形成一个更长的子序列。只要 nums[i] 严格大于在它位置之前的某个数，那么 nums[i] 就可以接在这个数后面形成一个更长的上升子序列。
-
-    public int lengthOfLIS(int[] nums) {
-        int[] dp = new int[nums.length];
-        Arrays.fill(dp, 1);
-        for (int i = 1; i < nums.length; i++) {
-            for (int j = 0; j < i; j++) {
-                if (nums[j] < nums[i]) {
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
-                }
-            }
-        }
-
-        int max = dp[0];
-        for (int i = 1; i < nums.length; i++) {
-            max = Math.max(max, dp[i]);
-        }
-        return max;
-    }
-
+public class task3_29_1 {
 
     //673. Number of Longest Increasing Subsequence
     public int findNumberOfLIS(int[] nums) {
