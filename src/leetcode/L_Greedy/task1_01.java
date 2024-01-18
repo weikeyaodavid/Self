@@ -43,19 +43,39 @@ public class task1_01 {
 
     //45. Jump Game II
     public int jump(int[] nums) {
-        int cover = 0;
-        int count = 0;
-        for(int i = 0; i < nums.length; i++){
-            if(i > cover)return 0;
-            if(i + nums[i] > cover)count++;
-            cover = Math.max(cover, i + nums[i]);
+        int ans = 0;
+        int end = 0;
+        int maxPos = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            maxPos = Math.max(nums[i] + i, maxPos);
+            if (i == end) {
+                end = maxPos;
+                ans++;
+            }
         }
-        return count;
+        return ans;
     }
 
     // 135. Candy
     public int candy(int[] ratings) {
-
+        int n = ratings.length;
+        int[] left = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && ratings[i] > ratings[i - 1]) {
+                left[i] = left[i - 1] + 1;
+            } else {
+                left[i] = 1;
+            }
+        }
+        int right = 0, ret = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            if (i < n - 1 && ratings[i] > ratings[i + 1]) {
+                right++;
+            } else {
+                right = 1;
+            }
+            ret += Math.max(left[i], right);
+        }
+        return ret;
     }
-
 }
