@@ -5,28 +5,6 @@ import java.util.Stack;
 
 public class task3_30 {
 
-    //20. Valid Parentheses
-    public boolean isValid(String s) {
-        Stack<String> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                stack.add(")");
-            } else if (s.charAt(i) == '{') {
-                stack.add("}");
-            } else if (s.charAt(i) == '[') {
-                stack.add("]");
-            } else if (s.charAt(i) == ']') {
-                if (stack.empty() || !stack.pop().equals("]")) return false;
-            } else if (s.charAt(i) == '}') {
-                if (stack.empty() || !stack.pop().equals("}")) return false;
-            } else if (s.charAt(i) == ')') {
-                if (stack.empty() || !stack.pop().equals(")")) return false;
-            }
-        }
-        return stack.empty();
-    }
-
-
     //91. Decode Ways
     // 这一类问题，问方案数，但不问具体方案的，可以考虑使用「动态规划」完成；
     //「动态规划」处理字符串问题的思想是：从一个空串开始，一点一点得到更大规模的问题的解。
@@ -86,6 +64,21 @@ public class task3_30 {
             right--;
         }
         return true;
+    }
+
+    //ByteDance
+    // 圆环上有 10 个点，编号为0 ~ 9。从 0 出发，
+    // 每次可以逆时针和顺时针走一步，问走 n 步回到 0 共有多少种走法。
+    public int findPath(int n){
+        int[][] dp = new int[n + 1][10];
+        dp[0][0] = 1;
+        for(int a = 1; a <= n; a++){
+            for(int b = 0; b < 10; b++){
+                //dp[a][b] 代表走 a 步到达 b
+                dp[a][b] = dp[a - 1][(b - 1 + n) % n] + dp[a - 1][(b + 1) % n];
+            }
+        }
+        return dp[n][0];
     }
 }
 
