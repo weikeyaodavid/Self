@@ -7,26 +7,24 @@ public class task4_06 {
     //        单个字母和空一定是回文
     //回文问题dp的话也使用二维数组
     public String longestPalindrome(String s) {
-        if (s.length() < 2) return s;
-        int max = 1;
-        String ans = s.substring(0, 1);
+        if(s.length() <= 1)return s;
         boolean[][] dp = new boolean[s.length()][s.length()];
-        for (int i = 0; i < s.length(); i++) dp[i][i] = true;
-        for (int j = 1; j < s.length(); j++) {
-            for (int i = 0; i < j; i++) {
-                if (s.charAt(i) == s.charAt(j)) {
-                    if (j - i < 3) dp[i][j] = true;
-                    else dp[i][j] = dp[i + 1][j - 1];
-                } else {
-                    dp[i][j] = false;
-                }
-                if (dp[i][j] && j - i + 1 >= max) {
-                    max = j - i + 1;
-                    ans = s.substring(i, j + 1);
+        int maxStart = 0;  //最长回文串的起点
+        int maxEnd = 0;    //最长回文串的终点
+        int maxLen = 1;  //最长回文串的长度
+        for(int i = s.length() - 1; i >= 0; i--){
+            for(int j = i; j < s.length(); j++){
+                if(s.charAt(i) == s.charAt(j) && (j - i <= 2 || dp[i + 1][j - 1])){
+                    dp[i][j] = true;
+                    if (j - i + 1 > maxLen) {
+                        maxLen = j - i + 1;
+                        maxStart = i;
+                        maxEnd = j;
+                    }
                 }
             }
         }
-        return ans;
+        return s.substring(maxStart, maxEnd + 1);
     }
 
     //97. Interleaving String
