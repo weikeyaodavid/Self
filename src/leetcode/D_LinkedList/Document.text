@@ -38,12 +38,3 @@
     ListNode fast = head;
     while(fast != null && fast.next != null)
 
-    141
-    142
-    160
-    19
-    206
-    92
-    203
-    234
-    328
