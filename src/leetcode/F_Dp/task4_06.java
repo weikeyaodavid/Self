@@ -58,4 +58,21 @@ public class task4_06 {
         return Math.min(Math.min(dp[costs.length - 1][0], dp[costs.length - 1][1]), dp[costs.length - 1][2]);
     }
 
+    // 补充题2.圆环回原点问题
+    // 圆环上有10个点，编号为0~9。从0点出发，每次可以逆时针和顺时针走一步，问走n步回到0点共有多少种走法。
+    public int circleSteps(int n, int k){
+        // 圆环中有n个节点，走k步回答原点有几种走法
+        // 走k步走到0的走法=走k-1步走到1的走法 + 走k-1步走到num-1的走法
+        // dp[i][j]表示走i步走到j点的走法种类
+        // dp[i][j] = dp[i-1][(j+1)%len] + dp[i-1][(j-1+len)%len]
+        // ps:公式之所以取余是因为j-1或j+1可能会超过圆环0~9的范围
+        int[][] dp = new int[k+1][n];
+        dp[0][0] = 1;
+        for(int i=1; i<=k; i++){
+            for(int j = 0; j<n; j++){
+                dp[i][j] = dp[i-1][(j+1)%n] + dp[i-1][(j-1+n)%n];
+            }
+        }
+        return dp[k][0];
+    }
 }
