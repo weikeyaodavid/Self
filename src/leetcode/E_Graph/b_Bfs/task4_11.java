@@ -10,7 +10,7 @@ public class task4_11 {
     //200. Number of Islands
     public int numIslands(char[][] grid) {
         boolean[][] visited = new boolean[grid.length][grid[0].length];
-        Queue<int[]> queue = new LinkedList<>();
+        LinkedList<int[]> queue = new LinkedList<>();
         int res = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
