@@ -13,6 +13,11 @@ public class task3_01 {
         List<int[]> res = new ArrayList<>();
         int length = intervals.length;
         Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+
+//        List<int[]> inter = Arrays.asList(intervals);
+//        List<int[]> newInter = new ArrayList<>(inter);
+//        newInter.sort((o1, o2) -> o1[0] - o2[0]);
+
         int i = 0;
         while(i < length){
             int left = intervals[i][0];
